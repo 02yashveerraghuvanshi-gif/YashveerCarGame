@@ -1,0 +1,53 @@
+#:kivy 2.0.0
+
+<Obstacle>:
+    size: 60, 100
+    canvas:
+        Color:
+            rgba: 1, 0, 0, 1  # Red obstacle car
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<PlayerCar>:
+    size: 50, 90
+    canvas:
+        Color:
+            rgba: 0.5, 0.8, 1, 1  # Light blue player car
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<CarGame>:
+    player: player_id
+    obstacle: obstacle_id
+
+    canvas:
+        Color:
+            rgba: 0.2, 0.2, 0.2, 1  # Grey Road Background
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    # The Score Counter at the top
+    Label:
+        font_size: 30
+        center_x: root.width / 2
+        top: root.top - 20
+        text: "Score: " + str(root.score)
+
+    # YOUR BRANDING AT THE BOTTOM 👇
+    Label:
+        font_size: 16
+        center_x: root.width / 2
+        y: 10
+        text: "Powered by Yashveer"
+        color: 1, 1, 1, 0.6  # Soft white color so it looks professional
+
+    PlayerCar:
+        id: player_id
+        center_x: root.width / 2
+        y: 60  # Moved up slightly so it doesn't overlap your text
+
+    Obstacle:
+        id: obstacle_id
